@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'session/css/styles.css' %}" media="screen" title="no title" charset="utf-8">
+    <title>Session Words</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="new_word">
+            <h2>Add a new word</h2>
+            <form action="/add_word" method = 'POST'>
+            {% csrf_token %}
+            <input type="text" placeholder="Input word here" name = 'new_word'>
+            <p>Choose color:</p>
+            <input type="radio" id="colorChoice1" name="color" value="red">
+            <label for="colorChoice1">Red</label>
+            <br>
+            <input type="radio" id="colorChoice2" name="color" value="green">
+            <label for="colorChoice2">Green</label>
+            <br>
+            <input type="radio" id="colorChoice3" name="color" value="blue">
+            <label for="colorChoice3">Blue</label>
+            <br>
+            <br>
+            <input type="checkbox" id="big_font" name="big_font" value="big_font">
+            <label for="big_font">show in BIG fonts!</label>
+            <br>
+            <br>
+            <input type="submit" value="Add to Session" >
+            </form>
+            <br>
+            <form action="/clear" method = 'POST'>
+            {% csrf_token %}
+            <input type="submit" value="Clear Words">
+            </form>
+        </div>
+        <hr>
+        <div id="list">
+            {% for word in words %}
+                <p class="{{word.color}} {% if word.big_font %} big_font {% endif %}"> {{ word.new_word }}
+                add at -- 
+                {{word.time}}
+                </p>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

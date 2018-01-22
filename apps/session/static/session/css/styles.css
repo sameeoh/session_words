@@ -1,0 +1,26 @@
+*{
+    margin: 0 auto;
+    padding: 0;
+}
+
+#wrapper{
+    width: 1000px;
+    min-height: 600px;
+    background-color: aquamarine
+}
+
+.blue{
+    color: blue;
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}
+
+.big_font{
+    font-size: 25px;
+}
